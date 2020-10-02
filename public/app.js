@@ -14,7 +14,7 @@ const masterHistory = document.getElementById('master-history')
 
 const API_KEY = 'c5345b11ea82fe2766d0c1fc97ee501e'
 const BASE_URL = `https://api.openweathermap.org/data/2.5/weather?
-appid=${API_KEY}`
+appid=${API_KEY}&mode=json&units=metric`
 const ICON_URL = 'https://openweathermap.org/img/w/'
 const DEFAULT_CITY = 'Dhaka,BD'
 
@@ -76,6 +76,7 @@ function getWeatherData(city = DEFAULT_CITY, coords,cb) {
                 main: data.weather[0].main,
                 description: data.weather[0].description,
                 temp: data.main.temp,
+                feels_like: data.main.feels_like,
                 pressure: data.main.pressure,
                 humidity: data.main.humidity
         
@@ -97,6 +98,7 @@ function setWeather(weather) {
     mainText.innerHTML = weather.main
     description.innerHTML = weather.description
     temp.innerHTML = weather.temp
+    feels_like.innerHTML = weather.feels_like
     pressure.innerHTML= weather.pressure
     humidity.innerHTML= weather.humidity
 }
@@ -114,6 +116,7 @@ function updateHistory(history) {
         tempHistory.getElementsByClassName('main')[0].innerHTML= h.main
         tempHistory.getElementsByClassName('description')[0].innerHTML= h.description
         tempHistory.getElementsByClassName('temp')[0].innerHTML= h.temp
+        tempHistory.getElementsByClassName('feels_like')[0].innerHTML= h.feels_like
         tempHistory.getElementsByClassName('pressure')[0].innerHTML= h.pressure
         tempHistory.getElementsByClassName('humidity')[0].innerHTML= h.humidity
         

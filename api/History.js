@@ -8,6 +8,7 @@ const HistorySchema = new Schema({
     main: String,
     description: String,
     temp: Number,
+    feels_like: Number,
     pressure: Number,
     humidity: Number
 })
